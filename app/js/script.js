@@ -73,7 +73,7 @@ window.onload = function () {
   
   addVertexButton.addEventListener('click', (event) => {
     if (ACTIVE_MODE == 1) {
-	    buttonController[1].style.backgroundColor = "white";
+	  buttonController[1].style.backgroundColor = "white";
       ACTIVE_MODE = 0;
     } else {
       buttonController[ACTIVE_MODE].style.backgroundColor = "white";
@@ -84,7 +84,7 @@ window.onload = function () {
     
   newEdgeButton.addEventListener('click', (event) => {
     if (ACTIVE_MODE == 2) {
-	    buttonController[2].style.backgroundColor = "white";
+	  buttonController[2].style.backgroundColor = "white";
       ACTIVE_MODE = 0;
     } else {
       buttonController[ACTIVE_MODE].style.backgroundColor = "white";
@@ -95,9 +95,11 @@ window.onload = function () {
     
   removeButton.addEventListener('click', (event) => {
     if (ACTIVE_MODE == 3) {
-	    buttonController[3].style.backgroundColor = "white";
+	  buttonController[3].style.backgroundColor = "white";
       ACTIVE_MODE = 0;
-    } else {
+    } 
+		
+	else {
       buttonController[ACTIVE_MODE].style.backgroundColor = "white";
       buttonController[3].style.backgroundColor = "red";
       ACTIVE_MODE = 3;
@@ -124,7 +126,4 @@ window.onload = function () {
       console.log("move");
     }
   });
-
-  
-  
 };
