@@ -107,7 +107,7 @@ window.onload = function () {
   canvas.addEventListener('click', function(event) {
     if (ACTIVE_MODE == 1) {
       var circle = new Path2D();
-      circle.moveTo(event.x-10, event.y);
+      circle.moveTo(event.x, event.y);
       circle.arc(event.x, event.y, 10, 0, 2 * Math.PI);
       ctx.fill(circle);
     }
