@@ -49,7 +49,9 @@ class Edge {
 }
 
 ACTIVE_MODE = 0
-GRAPH = []
+VERTICES = []
+EDGES = []
+LABEL = 0
 
 window.onload = function () {
   const canvas = document.getElementById("canvas");
@@ -69,6 +71,13 @@ window.onload = function () {
   window.addEventListener('resize', function(event) {
     canvas.height = canvasContainer.offsetHeight;
     canvas.width = canvasContainer.offsetWidth;
+    
+    for (i=0;i<VERTICES.length;i++) {
+      ctx.strokeStyle = "grey";
+      ctx.lineWidth = 5;
+      ctx.stroke(VERTICES[i].object);
+	    ctx.fill(VERTICES[i].object);
+    }
   });
 
   /* BUTTON TOGGLING */
@@ -124,7 +133,10 @@ window.onload = function () {
       circle.moveTo(event.x, event.y);
       circle.arc(event.x, event.y, 10, 0, 2 * Math.PI);
       ctx.stroke(circle);
-	ctx.fill(circle);
+	    ctx.fill(circle);
+      var vertex = new Vertex(LABEL, 0, [event.x, event.y], circle);
+	    VERTICES.push(vertex);
+	    LABEL = LABEL+1;
     }
     
     else if (ACTIVE_MODE == 2) {
