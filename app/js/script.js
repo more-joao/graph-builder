@@ -52,7 +52,9 @@ ACTIVE_MODE = 0
 GRAPH = []
 
 window.onload = function () {
-  const canvas = document.getElementById('canvas');
+  const canvas = document.getElementById("canvas");
+  const toolsContainer = document.getElementById("toolbar");
+  const canvasContainer = document.getElementById("graph_canvas");
   const ctx = canvas.getContext("2d");
   const addVertexButton = document.getElementById("add_vertex");
   const newEdgeButton = document.getElementById("new_edge");
@@ -61,6 +63,14 @@ window.onload = function () {
   
   var buttonController = [moveButton, addVertexButton, newEdgeButton, removeButton];
   
+  canvas.height = canvasContainer.offsetHeight;
+  canvas.width = canvasContainer.offsetWidth;
+  
+  window.addEventListener('resize', function(event) {
+    canvas.height = canvasContainer.offsetHeight;
+    canvas.width = canvasContainer.offsetWidth;
+  });
+
   /* BUTTON TOGGLING */
   
   moveButton.addEventListener('click', (event) => {
@@ -109,9 +119,12 @@ window.onload = function () {
   canvas.addEventListener('click', function(event) {
     if (ACTIVE_MODE == 1) {
       var circle = new Path2D();
+      ctx.strokeStyle = "grey";
+      ctx.lineWidth = 5;
       circle.moveTo(event.x, event.y);
       circle.arc(event.x, event.y, 10, 0, 2 * Math.PI);
-      ctx.fill(circle);
+      ctx.stroke(circle);
+	ctx.fill(circle);
     }
     
     else if (ACTIVE_MODE == 2) {
